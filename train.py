@@ -16,11 +16,13 @@ warnings.filterwarnings("ignore")
 # os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 class Trainer:
+    print(4)
     '''
             Drug Target Binding Affinity
     '''
 
     def __init__(self, device='cuda:0'):
+        print(2)
         self.lr = 0.001
         self.decay = 0.00001
         self.BATCH_SIZE = 64
@@ -86,6 +88,7 @@ class Trainer:
                 concordance_index(y_label, y_pred), y_pred]
 
     def train(self):
+        print(3)
         max_MSE = 10000
         model_max = copy.deepcopy(self.model)
         print('--- Go for Training ---')
@@ -161,6 +164,7 @@ class Trainer:
 
 
 if __name__ == '__main__':
+    print(0)
     trainer = Trainer()
     # trainer.load_pretrained(path="saved_models/model_364.pt")
     trainer.train()

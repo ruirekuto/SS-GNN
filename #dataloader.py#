@@ -9,7 +9,7 @@ from torch._six import container_abcs, string_classes, int_classes #from torch._
 class Collater(object):
     def __init__(self, follow_batch):
         self.follow_batch = follow_batch
-
+S
     def collate(self, batch):
         elem = batch[0]
         if isinstance(elem, Data):

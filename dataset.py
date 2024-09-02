@@ -13,17 +13,19 @@ from torch_geometric.transforms import (RandomFlip,
 
 path = '../data/mice_features2/all'
 labels = '../data/mice_features2/total_labels.pkl'
-
+print("dataset")
 class GINDataset(Dataset):
 
     def __init__(self, root=path, label=labels, phase='train'):
         'Initialization'
+        
         # root = os.path.join(root, phase)
         total = os.listdir(root)
         self.root = root
         self.data = total
         self.phase = phase
         np.random.seed(16)
+        print("ok")
         with open(label, 'rb') as f:
             self.labels = pickle.load(f)
 
@@ -56,6 +58,7 @@ class GINDataset(Dataset):
         path = self.data[index]
         # label = convert_y_unit(label, 'nM', 'p')
         path = os.path.join(self.root, path)
+        print(1)
         with open(path, 'rb') as f:
             x, edge_index, edge_attr = pickle.load(f)
         label = self.labels[path.split('/')[-1].split('.')[0]]
